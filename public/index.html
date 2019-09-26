@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./nav.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"
+      integrity="sha256-WVsM3xrcqyuFNF3W1qtIKbHFsD0977nDQA8DCMp1zCw="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"
+      integrity="sha256-2/3R3NV5zryj0fDjD3cDh+SNiWQ/TJiMVZzAo5FrhiU="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main">
+      <div class="swap">
+          <ul>
+              <li><a href="index.html">Home</a></li>
+                  <li><a href="blob.html">Blob</a></li>
+                  <li><a href="readpoem.html">Text</a></li>
+                  <li><a href="readcsv.html">CSV</a></li>
+                  <li><a href="readfilearray.html">Multy Image</a></li>
+                  <li><a href="readjson.html">Json</a></li>
+              </li>
+            </ul>
+            <div id="head">
+                <h1 id="h1_head">WELCOME MY APP SELFIE</h1>
+              </div>    
+      </div>      
+      <div id="head-link">
+        <div><a href="/">enter</a>|<a href="/logs">list</a></div>
+      </div>
+      <div id="content">
+        <p>
+          Latitude:<span id="latitude"></span>&deg; <br />
+          Longtitude:<span id="longitude"></span>&deg;
+        </p>
+        <script src="./sketch.js"></script>
+        <br />
+        <label for="mood">Enter your mood:</label>
+        <input id="mood" type="text" value="" />
+        <button id="geolocate" type="submit">Submit</button>
+        <button id="refresh">Refresh</button>
+      </div>
+      <div id="right">
+        <script src="./logs/logs.js"></script>
+        <script>
+          const temp = document
+            .getElementById("refresh")
+            .addEventListener("click", loadpage);
+
+          function loadpage() {
+            location.reload();
+          }
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

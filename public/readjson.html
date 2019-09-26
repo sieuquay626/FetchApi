@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Train: Data and APIs Project 1</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./nav.css" />
+
+    <style>
+      #issMap {
+        height: 480px;
+      }
+
+       #iss{
+        text-align: center;
+        font-weight: bold;
+        font-size: 50px;
+        color: rgb(121, 56, 89);
+
+      }
+    </style>
+  </head>
+  <body>
+      <div class="swap">
+          <ul>
+              <li><a href="index.html">Home</a></li>
+                  <li><a href="blob.html">Blob</a></li>
+                  <li><a href="readpoem.html">Text</a></li>
+                  <li><a href="readcsv.html">CSV</a></li>
+                  <li><a href="readfilearray.html">Multy Image</a></li>
+                  <li><a href="readjson.html">Json</a></li>
+              </li>
+            </ul>
+            <div id="head">
+                <h1 id="h1_head">FETCH JSON</h1>
+              </div>    
+      </div>      
+      <div id="head-link">
+        <div><a href="/">enter</a>|<a href="/logs">list</a></div>
+      </div>
+    <div id='iss'>ISS</div>
+    <p>
+      ISS Latitude: <span id="latitude">loading...</span>&deg;.<br />
+      ISS Longitude: <span id="longitude">loading...</span>&deg;.<br />
+    </p>
+    <div id="issMap"></div>
+    <script>
+      window.addEventListener("load", setup);
+      function setup() {
+        // Image from: https://commons.wikimedia.org/wiki/File:International_Space_Station.svg
+        const issIcon = L.icon({
+          iconUrl: "/imageblob/iss.png"
+        });
+        const map = L.map("issMap");
+        map.setView([0, 0], 1);
+        const attribution =
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        const tiles = L.tileLayer(
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          { attribution }
+        );
+        tiles.addTo(map);
+        const marker = L.marker([0, 0], { icon: issIcon }).addTo(map);
+        async function update() {
+          const { latitude, longitude } = await getData();
+          const lonSpan = document.getElementById("longitude");
+          const latSpan = document.getElementById("latitude");
+          lonSpan.textContent = longitude.toFixed(2);
+          latSpan.textContent = latitude.toFixed(2);
+          marker.setLatLng([latitude, longitude]);
+        }
+        async function getData() {
+          const url = "https://api.wheretheiss.at/v1/satellites/25544";
+          const response = await fetch(url);
+          return response.json();
+        }
+        update();
+        setInterval(update, 1000);
+      }
+    </script>
+  </body>
+</html>

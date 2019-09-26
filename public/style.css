@@ -1,0 +1,70 @@
+body {
+  /* background: url("./imageblob/sharon-pittaway-98257-unsplash.jpg") no-repeat; */
+  background-color: #f8e9e9;
+  background-size: none;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-family: Arial, Tahoma;
+  font-size: 12px;
+}
+
+h1 {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-align: right;
+  color: honeydew;
+}
+p {
+  font-size: 20px;
+  padding: 10px;
+  /* background-color: #ffaaff; */
+}
+#head {
+  margin-right: 0%;
+  margin-top: 75px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+.swap {
+  height: 150px;
+  border: 1px solid #cdcdcd;
+
+  background-color: #694873;
+}
+#main {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#head-link {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #8b728e;
+  /* background-color: #694873; */
+  border: 1px solid #cdcdcd;
+  margin-bottom: 5px;
+  clear: both;
+}
+#content {
+  width: 400px;
+  min-height: 600px;
+  border: 1px solid #cdcdcd;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+#right {
+  width: 700px;
+  min-height: 600px;
+  border: 1px solid #cdcdcd;
+  float: right;
+  margin-bottom: 5px;
+}

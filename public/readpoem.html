@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./nav.css" />
+    <title>Fetch Api</title>
+  </head>
+  <body>
+      <div class="swap">
+          <ul>
+              <li><a href="index.html">Home</a></li>
+                  <li><a href="blob.html">Blob</a></li>
+                  <li><a href="readpoem.html">Text</a></li>
+                  <li><a href="readcsv.html">CSV</a></li>
+                  <li><a href="readfilearray.html">Multy Image</a></li>
+                  <li><a href="readjson.html">Json</a></li>
+              </li>
+            </ul>
+            <div id="head">
+                <h1 id="h1_head">FETCH POEM</h1>
+              </div>    
+      </div>      
+      <div id="head-link">
+        <div><a href="/">enter</a>|<a href="/logs">list</a></div>
+        <p id="poem"/>
+    <script>
+      catchPoem()
+        .then(poem => {
+          document.getElementById('poem').innerText = poem;
+          console.log('yay');
+        })
+        .catch(error => {
+          console.log('error!');
+          console.error(error);
+        });
+      async function catchPoem() {
+        const response = await fetch('poem.txt');
+        return await response.text();
+      }
+    </script>
+  </body>
+</html>
